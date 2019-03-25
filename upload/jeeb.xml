@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<extension version="2.6" type="plugin" group="vmpayment" method="upgrade">
+    <name>VM Payment - Jeeb</name>
+    <creationDate>July 27 2012</creationDate>
+    <author>Jeeb</author>
+    <authorUrl>http://www.jeeb.io</authorUrl>
+    <copyright>Copyright</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <version>1.0.0</version>
+    <description>Jeeb payment plugin</description>
+    <files>
+        <filename plugin="jeeb">jeeb.php</filename>
+        <folder>language</folder>
+    </files>
+    <params addpath="/administrator/components/com_virtuemart/elements">
+
+        <param name="merchant_apikey" type="text"  label="VMPAYMENT_JEEB_API_KEY_LABEL" description="VMPAYMENT_JEEB_API_KEY_LABEL" />
+        <param name="network" type="list" default="live" label="VMPAYMENT_JEEB_NETWORK_LABEL"
+           description="VMPAYMENT_JEEB_NETWORK_LABEL">
+            <option value="live">VMPAYMENT_JEEB_NETWORK_LABEL_LIVE</option>
+            <option value="test">VMPAYMENT_JEEB_NETWORK_LABEL_TEST</option>
+        </param>
+        <param name="baseCur" type="list" default="btc" label="Base Currency"
+           description="Base Currency">
+            <option value="btc">BTC</option>
+            <option value="irr">EUR</option>
+            <option value="eur">IRR</option>
+            <option value="usd">USD</option>
+        </param>
+        <param name="targetCur" type="text" default="btc/test-btc" label="Target Currency (Enter options from [btc,xrp,xmr,ltc,bch,eth,test-btc]. For multiple options use '/' for separating. Eg: 'btc/test-btc'    )"
+           description="Target Currency">
+        </param>
+        <param name="lang" type="list" default="none" label="Language"
+           description="Language">
+            <option value="none">AUTO-SELECT</option>
+            <option value="en">ENGLISH</option>
+            <option value="fa">PERSIAN</option>
+        </param>
+    </params>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                    <field name="merchant_apikey" type="text" label="VMPAYMENT_JEEB_API_KEY_LABEL" description="VMPAYMENT_JEEB_API_KEY_LABEL"/>
+
+                    <field name="network" type="list" default="live" label="VMPAYMENT_JEEB_NETWORK_LABEL"
+                       description="VMPAYMENT_JEEB_NETWORK_LABEL">
+                        <option value="live">VMPAYMENT_JEEB_NETWORK_LABEL_LIVE</option>
+                        <option value="test">VMPAYMENT_JEEB_NETWORK_LABEL_TEST</option>
+                    </field>
+                    <field name="baseCur" type="list" default="btc" label="BASE CURRENCY"
+                       description="BASE CURRENCY">
+                       <option value="btc">BTC</option>
+                       <option value="irr">EUR</option>
+                       <option value="eur">IRR</option>
+                       <option value="usd">USD</option>
+                    </field>
+                    <field name="targetCur" type="text" default="btc/test-btc" label="Target Currency"
+                       description="Target Currency">
+                    </field>
+                    <field name="lang" type="list" default="none" label="LANGUAGE"
+                       description="LANGUAGE">
+                       <option value="none">AUTO-SELECT</option>
+                       <option value="en">ENGLISH</option>
+                       <option value="fa">PERSIAN</option>
+                    </field>
+                    <field name="payment_logos" type="vmfiles"  multiple="true" label="VMPAYMENT_JEEB_LOGO"
+                      description="VMPAYMENT_JEEB_LOGO"
+                      directory="/images/stories/virtuemart/payment"
+                      default="default" hide_default="1" hide_none="1"
+                      stripext="0" exclude="^_"/>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
