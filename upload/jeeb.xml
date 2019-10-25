@@ -7,7 +7,7 @@
     <authorUrl>http://www.jeeb.io</authorUrl>
     <copyright>Copyright</copyright>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <version>1.0.0</version>
+    <version>3.0.0</version>
     <description>Jeeb payment plugin</description>
     <files>
         <filename plugin="jeeb">jeeb.php</filename>
@@ -15,24 +15,31 @@
     </files>
     <params addpath="/administrator/components/com_virtuemart/elements">
 
-        <param name="merchant_apikey" type="text"  label="VMPAYMENT_JEEB_API_KEY_LABEL" description="VMPAYMENT_JEEB_API_KEY_LABEL" />
-        <param name="network" type="list" default="live" label="VMPAYMENT_JEEB_NETWORK_LABEL"
-           description="VMPAYMENT_JEEB_NETWORK_LABEL">
-            <option value="live">VMPAYMENT_JEEB_NETWORK_LABEL_LIVE</option>
-            <option value="test">VMPAYMENT_JEEB_NETWORK_LABEL_TEST</option>
+        <param name="merchant_apikey" type="text"  label="Signature" description="The signature provided by Jeeb for you merchant." />
+        <param name="network" type="list" default="live" label="Allow TestNets"
+           description="Allows testnets such as TBTC to get processed.">
+            <option value="test">YES</option>
+            <option value="live">NO</option>
+        </param>
+        <param name="allowRefund" type="list" default="yes" label="Allow Refund"
+           description="Allows payments to be refunded.">
+            <option value="yes">YES</option>
+            <option value="no">NO</option>
         </param>
         <param name="baseCur" type="list" default="btc" label="Base Currency"
-           description="Base Currency">
+           description="The base currency of your website.">
             <option value="btc">BTC</option>
-            <option value="irr">EUR</option>
-            <option value="eur">IRR</option>
+            <option value="eur">EUR</option>
+            <option value="irr">IRR</option>
+            <option value="toman">TOMAN</option>
             <option value="usd">USD</option>
         </param>
-        <param name="targetCur" type="text" default="btc/test-btc" label="Target Currency (Enter options from [btc,xrp,xmr,ltc,bch,eth,test-btc]. For multiple options use '/' for separating. Eg: 'btc/test-btc'    )"
-           description="Target Currency">
+        <param name="targetCur" type="text" default="btc/test-btc" label="Payable Currencies"
+           description="The currencies which users can use for payments.">
         </param>
+        <param name="expiration" type="text"  label="Expiration Time" description="Expands default payments expiration time. It should be between 15 to 2880 (mins)." />
         <param name="lang" type="list" default="none" label="Language"
-           description="Language">
+           description="The language of the payment area.">
             <option value="none">AUTO-SELECT</option>
             <option value="en">ENGLISH</option>
             <option value="fa">PERSIAN</option>
@@ -41,25 +48,31 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
-                    <field name="merchant_apikey" type="text" label="VMPAYMENT_JEEB_API_KEY_LABEL" description="VMPAYMENT_JEEB_API_KEY_LABEL"/>
+                    <field name="merchant_apikey" type="text" label="Signature" description="The signature provided by Jeeb for you merchant."/>
 
-                    <field name="network" type="list" default="live" label="VMPAYMENT_JEEB_NETWORK_LABEL"
-                       description="VMPAYMENT_JEEB_NETWORK_LABEL">
-                        <option value="live">VMPAYMENT_JEEB_NETWORK_LABEL_LIVE</option>
-                        <option value="test">VMPAYMENT_JEEB_NETWORK_LABEL_TEST</option>
+                    <field name="network" type="list" default="live" label="Allow TestNets"
+                       description="Allows testnets such as TBTC to get processed.">
+                        <option value="test">YES</option>
+                        <option value="live">NO</option>
                     </field>
-                    <field name="baseCur" type="list" default="btc" label="BASE CURRENCY"
-                       description="BASE CURRENCY">
+                    <field name="allowRefund" type="list" default="yes" label="Allow Refund"
+                       description="Allows payments to be refunded.">
+                        <option value="yes">YES</option>
+                        <option value="no">NO</option>
+                    </field>
+                    <field name="baseCur" type="list" default="btc" label="Base Currency"
+                       description="The base currency of your website.">
                        <option value="btc">BTC</option>
                        <option value="irr">EUR</option>
                        <option value="eur">IRR</option>
                        <option value="usd">USD</option>
                     </field>
-                    <field name="targetCur" type="text" default="btc/test-btc" label="Target Currency"
-                       description="Target Currency">
+                    <field name="targetCur" type="text" default="btc/test-btc" label="Payable Currencies"
+                       description="The currencies which users can use for payments.">
                     </field>
+                    <field name="expiration" type="text" label="Expiration" description="Expands default payments expiration time. It should be between 15 to 2880 (mins)."/>
                     <field name="lang" type="list" default="none" label="LANGUAGE"
-                       description="LANGUAGE">
+                       description="The language of the payment area.">
                        <option value="none">AUTO-SELECT</option>
                        <option value="en">ENGLISH</option>
                        <option value="fa">PERSIAN</option>
