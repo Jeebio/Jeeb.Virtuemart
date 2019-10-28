@@ -15,7 +15,7 @@ if (!class_exists('vmPSPlugin'))
 class plgVmPaymentJeeb extends vmPSPlugin
 {
 
-  const PLUGIN_NAME = 'easydigitaldownloads';
+  const PLUGIN_NAME = 'virtuemart';
   const PLUGIN_VERSION = '3.0';
   const BASE_URL = "https://core.jeeb.io/api/";
 
